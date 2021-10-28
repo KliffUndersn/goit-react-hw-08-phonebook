@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
 import { v4 as generate } from 'uuid';
 import { useSelector } from 'react-redux';
-import { addContact, getContact } from '../../../redux/operations';
+import {
+  addContact,
+  getContact,
+} from '../../../redux/contacts/contactsOperations';
 import fields from './fields';
 import { useDispatch } from 'react-redux';
 
 const InputForm = () => {
   const dispatch = useDispatch();
-  const items = useSelector(state => state.items);
+  const items = useSelector(state => state.contacts.items.items);
+  console.log(items);
   const [state, setState] = useState({
     name: '',
     number: '',
@@ -28,7 +32,6 @@ const InputForm = () => {
       return alert(`${e.target.name.value} says hello from chat`);
     }
     const singleContact = {
-      id: generate(),
       name,
       number,
     };

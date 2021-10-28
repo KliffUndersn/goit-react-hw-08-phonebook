@@ -8,7 +8,13 @@ export const fields = {
   password: {
     name: 'password',
     type: 'password',
-    placeholder: 'Enter пароль',
+    placeholder: 'Enter password',
+    required: true,
+  },
+  name: {
+    name: 'name',
+    type: 'text',
+    placeholder: 'Enter name',
     required: true,
   },
 };

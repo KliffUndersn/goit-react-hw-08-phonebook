@@ -1,12 +1,17 @@
 import { useState } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { userLogin } from '../../redux/auth/authOperations';
 import { fields } from './fields';
 import { initialState } from './initialState';
-
 import styles from './LoginForm.module.css';
 
-const LoginForm = ({ onSubmit }) => {
+const LoginForm = () => {
   const [data, setData] = useState(initialState);
+  const dispatch = useDispatch();
+
+  const handleUserAuth = dataUser => {
+    dispatch(userLogin(dataUser));
+  };
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -18,7 +23,7 @@ const LoginForm = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(data);
+    handleUserAuth(data);
     setData({ ...initialState });
   };
 

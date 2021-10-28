@@ -1,4 +1,4 @@
-import api from '../shared/services/contacts';
+import api from '../../shared/services/api';
 import {
   getContactSuccess,
   getContactError,
@@ -9,7 +9,7 @@ import {
   removeContactError,
   removeContactRequest,
   removeContactSuccess,
-} from './actions';
+} from './contactsActions';
 
 export const getContact = () => {
   const actionFunc = async dispatch => {

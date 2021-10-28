@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { filterContact } from '../../../redux/actions';
+import { filterContact } from '../../../redux/contacts/contactsActions';
 
 export const FilterContacts = () => {
   const dispatch = useDispatch();
@@ -17,8 +17,4 @@ export const FilterContacts = () => {
       />
     </>
   );
-};
-
-FilterContacts.propTypes = {
-  filtered: PropTypes.func.isRequired,
 };

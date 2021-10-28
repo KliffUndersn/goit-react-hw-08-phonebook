@@ -1,12 +1,19 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { userRegister } from '../../redux/auth/authOperations';
 
 import { fields } from './fields';
 import { initialState } from './initialState';
 
 import styles from './RegisterForm.module.css';
 
-const RegisterForm = ({ onSubmit }) => {
+const RegisterForm = () => {
   const [data, setData] = useState(initialState);
+  const dispatch = useDispatch();
+
+  const handleUserAuth = dataUser => {
+    dispatch(userRegister(dataUser));
+  };
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -18,7 +25,7 @@ const RegisterForm = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(data);
+    handleUserAuth(data);
     setData({ ...initialState });
   };
 
@@ -35,6 +42,9 @@ const RegisterForm = ({ onSubmit }) => {
             value={data.password}
             onChange={handleChange}
           />
+        </div>
+        <div>
+          <input {...fields.name} value={data.name} onChange={handleChange} />
         </div>
         <button type="submit">Register</button>
       </form>
