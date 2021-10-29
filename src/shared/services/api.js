@@ -6,16 +6,16 @@ const instance = axios.create({
 });
 const token = {
   set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
-    axios.defaults.headers.common.Authorization = ``;
+    instance.defaults.headers.common.Authorization = ``;
   },
 };
 
 export const fetchAllContacts = async () => {
   const { data } = await instance.get('/contacts');
-  // console.log(data);
+  console.log(data);
   return data;
 };
 
@@ -28,10 +28,9 @@ export const fetchRemoveContact = async id => {
   const { data } = await instance.delete(`/contacts/${id}`);
   return data;
 };
-export const fetchGetCurrent = async () => {
+export const fetchGetCurrent = async currentToken => {
+  token.set(currentToken);
   const { data } = await instance.get('/users/current');
-  const state = store.getState();
-  token.set(state.auth.user.token);
   return data;
 };
 

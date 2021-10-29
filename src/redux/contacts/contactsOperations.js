@@ -14,7 +14,6 @@ import {
 export const getContact = () => {
   const actionFunc = async dispatch => {
     dispatch(getContactRequest());
-
     try {
       const data = await api.fetchAllContacts();
       dispatch(getContactSuccess(data));

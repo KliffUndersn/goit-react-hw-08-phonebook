@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   fetchPostLogin,
   fetchPostLogout,
@@ -57,7 +58,6 @@ export const userRefresh = () => (dispatch, getState) => {
       user: { token },
     },
   } = getState();
-
   fetchGetCurrent(token)
     .then(data => dispatch(userRefreshSuccess(data)))
     .catch(err => dispatch(userRefreshError(err.message)));

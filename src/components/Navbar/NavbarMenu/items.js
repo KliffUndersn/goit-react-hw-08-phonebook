@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 
-export const items = [
+export const publicItem = [
   {
     id: nanoid(),
     to: '/',
@@ -11,6 +11,8 @@ export const items = [
     to: '/register',
     text: 'Register page',
   },
+];
+export const privateItems = [
   {
     id: nanoid(),
     to: '/contacts',

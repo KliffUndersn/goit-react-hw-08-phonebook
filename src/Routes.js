@@ -1,22 +1,24 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { ContactList } from './components/InputForm/ContactList/ContactList';
 import InputForm from './components/InputForm/inputForm/InputForm';
 import LoginForm from './components/LoginForm/LoginForm';
 import RegisterForm from './components/RegisterForm/RegisterForm';
+import PrivateRoute from './components/PrivateRoutes';
+import PublicRoute from './components/PublicRoutes';
 
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/">
+      <PublicRoute restricted exact path="/" redirectTo="/contacts">
         <LoginForm />
-      </Route>
-      <Route exact path="/register">
+      </PublicRoute>
+      <PublicRoute restricted exact path="/register" redirectTo="/contacts">
         <RegisterForm />
-      </Route>
-      <Route exact path="/contacts">
+      </PublicRoute>
+      <PrivateRoute exact path="/contacts" redirectTo="/">
         <InputForm />
         <ContactList />
-      </Route>
+      </PrivateRoute>
     </Switch>
   );
 };
