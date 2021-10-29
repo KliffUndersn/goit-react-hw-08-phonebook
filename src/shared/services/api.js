@@ -15,7 +15,7 @@ const token = {
 
 export const fetchAllContacts = async () => {
   const { data } = await instance.get('/contacts');
-  console.log(data);
+  // console.log(data);
   return data;
 };
 
