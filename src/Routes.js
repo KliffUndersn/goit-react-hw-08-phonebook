@@ -5,6 +5,7 @@ import LoginForm from './components/LoginForm/LoginForm';
 import RegisterForm from './components/RegisterForm/RegisterForm';
 import PrivateRoute from './components/PrivateRoutes';
 import PublicRoute from './components/PublicRoutes';
+import { FilterContacts } from './components/InputForm/FilterContacts/FilterContacts';
 
 const Routes = () => {
   return (
@@ -17,6 +18,7 @@ const Routes = () => {
       </PublicRoute>
       <PrivateRoute exact path="/contacts" redirectTo="/">
         <InputForm />
+        <FilterContacts />
         <ContactList />
       </PrivateRoute>
     </Switch>
